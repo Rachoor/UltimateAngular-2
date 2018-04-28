@@ -28,7 +28,8 @@ const paths = {
     'angular-ui-router/release/angular-ui-router.js',
     'firebase/firebase.js',
     'angularfire/dist/angularfire.js',
-    'angular-loading-bar/build/loading-bar.min.js'
+    'angular-loading-bar/build/loading-bar.min.js',
+    'angular-parse/angular-parse.js'
   ],
   static: [
     `${root}/index.html`,
@@ -103,8 +104,8 @@ gulp.task('watch', ['serve', 'scripts'], () => {
   gulp.watch(paths.styles, ['styles']);
 });
 
-gulp.task('firebase', ['styles', 'scripts'], cb => {
-  return exec('firebase deploy', function (err, stdout, stderr) {
+gulp.task('b4a', ['styles', 'scripts'], cb => {
+  return exec('b4a deploy', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
@@ -121,5 +122,5 @@ gulp.task('default', [
 gulp.task('production', [
   'copy',
   'scripts',
-  'firebase'
+  'b4a'
 ]);
